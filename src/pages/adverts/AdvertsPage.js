@@ -1,12 +1,7 @@
-
-
-import { useState } from 'react';
 import'./AdvertsPage.css';
-import { getLatestAdverts } from './service';
 
 function AdvertsPage(){
-  const[adverts,setAdverts] = useState([]);
-    const /*adverts=[
+    const adverts=[
         {
           "id": "dcc862fd-5894-4652-bde8-766ecdba5a50",
           "createdAt": "2023-11-19T12:55:11.000Z",
@@ -29,8 +24,7 @@ function AdvertsPage(){
           ],
           "photo": "http://localhost:3001/public/1700398587378-347191206.jpg"
         }
-      ];*/
-      getLatestAdverts().then(adverts=>setAdverts(setAdverts));
+      ];
     return (
     <div className="advertsPage">
         <ul style={{ listStyle: 'none', border: '1px solid blue'}}>
