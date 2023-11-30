@@ -1,3 +1,4 @@
+import Button from"../../components/shared/Button";
 import { login } from "./service";
 function LoginPage(){
     const handleSubmit=(event) =>{
@@ -9,7 +10,9 @@ function LoginPage(){
         <form onSubmit={handleSubmit}>
             <input type="text" name="email"></input>
             <input type="password" name="password"></input>
-            <button type="submit">Log in</button>
+            
+            <Button type="submit" $variant="primary" disabled={false}>Log in</Button>
+
         </form>
     </div>;
 }
