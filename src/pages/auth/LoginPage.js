@@ -1,9 +1,14 @@
+//Simport { useState } from "react";
 import Button from"../../components/shared/Button";
 import { login } from "./service";
-function LoginPage(){
-    const handleSubmit=(event) =>{
+function LoginPage({onLogin}){
+    
+    const handleSubmit=async(event) =>{
         event.preventDefault();
-        login({email: event.target.email.value,password: event.target.password.value})
+        await login({email: event.target.email.value,password: event.target.password.value})
+        //está logueado
+        onLogin();
+        //setIsLogged(true);
     };
     return<div>
         <h1>Loginto Walla-react</h1>
