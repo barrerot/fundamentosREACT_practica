@@ -3,28 +3,31 @@ import { useState } from "react";
 import Button from"../../components/shared/Button";
 import { login } from "./service";
 function LoginPage({onLogin}){
-    const[email,setEmail]= useState('');
-    const[password,setPassword]=useState('');
+    //const[email,setEmail]= useState('');
+    //const[password,setPassword]=useState('');
+    const[credentials, setCredentials]=useState({
+        email:'',password:'',
+    })
     
     const handleSubmit=async(event) =>{
         event.preventDefault();
-        await login({email: event.target.email.value,password: event.target.password.value})
+        await login(credentials)
         //está logueado
         onLogin();
         //setIsLogged(true);
     };
     const handleEmailChange=(event)=>{
-        setEmail(event.target.value)
+        setCredentials({email:event.target.value,password: credentials.password});
  //console.log(event.target.value);
 
     };
 
     const handlePasswordChange=(event)=>{
-        setPassword(event.target.value)
+        setCredentials({email: credentials.email, password:event.target.value});
        // console.log(event.target.value);
        
            };
-           const disabled=!(email&& password);
+           const disabled=!(credentials.email&& credentials.password);
     
     return<div>
         <h1>Loginto Walla-react</h1>
