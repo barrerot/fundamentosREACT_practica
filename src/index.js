@@ -2,12 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import storaje from './utils/storaje';
+import { setAuthorizationHeader } from './api/client';
 
+const accessToken= storaje.get('auth')
+if(accessToken){
+  setAuthorizationHeader(accessToken);
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App initiallyLogged={accessToken} />
   </React.StrictMode>
 );
 
