@@ -5,9 +5,10 @@ import LoginPage from"./pages/auth/LoginPage";
 function App({initiallyLogged}) {
   const[isLogged,setIsLogged]= useState(initiallyLogged);
   const handleLogin=()=>setIsLogged(true);
+  const handleLogout=() =>setIsLogged(false);
   return (
     <div className="App">
-      {isLogged ?<AdvertsPage></AdvertsPage>:
+      {isLogged ?<AdvertsPage onLogout={handleLogout}></AdvertsPage>:
       <LoginPage onLogin={handleLogin}></LoginPage>}
       <header className="App-header">
         
