@@ -20,7 +20,7 @@ function AdvertsPage(){
       {adverts.length?
         <ul style={{ listStyle: 'none', border: '1px solid blue'}}>
             {
-                adverts.map((advert )=><li >{advert.name}</li>)
+                adverts.map((advert )=><li ><br/>{advert.name} <b><br/>precio:</b>{advert.price}€ <b><br/>tags:</b>{advert.tags}€ <b><br/>tipo:</b>{advert.sale ? "es de venta" : "es de compra"}<br/> </li>)
             }
         
         </ul>:<Button varuant="primary">Da de alta el tuyo</Button>}
