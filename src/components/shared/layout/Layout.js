@@ -1,8 +1,8 @@
 import Footer from"./Footer";
 import Header from"./Header"
- function Layout({ tittle,children, ...rest }) {
+ function Layout({ tittle,children }) {
     return ( <div>
-        <Header {...rest}></Header>
+        <Header ></Header>
         <main>
             <h2>{tittle}</h2>
             {children}

@@ -1,8 +1,11 @@
 //Simport { useState } from "react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from"../../components/shared/Button";
 import { login } from "./service";
-function LoginPage({onLogin}){
+import { AuthContext, useAuth } from "./context";
+
+function LoginPage(){
+    const{onLogin}=useAuth();
     //const[email,setEmail]= useState('');
     //const[password,setPassword]=useState('');
     const[credentials, setCredentials]=useState({

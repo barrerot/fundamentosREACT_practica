@@ -5,7 +5,7 @@ import Button from"../../components/shared/Button";
 import Layout from "../../components/shared/layout/Layout"; 
 import { logout } from '../auth/service';
 
-function AdvertsPage(props){
+function AdvertsPage(){
   const[adverts,setAdverts]=useState([]);
     useEffect(() => {
       getLatestAdverts().then(adverts=>setAdverts(adverts));
@@ -14,7 +14,7 @@ function AdvertsPage(props){
       
    
     return (
-      <Layout tittle="Los anuncios que hay.."{...props}>
+      <Layout tittle="Los anuncios que hay..">
     <div className="advertsPage">
       {/*<Button onClick={handleLogout}>Logout</Button>*/}
       {adverts.length?
