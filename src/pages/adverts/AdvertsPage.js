@@ -14,7 +14,7 @@ function AdvertsPage(){
       
    
     return (
-      <Layout tittle="Los anuncios que hay..">
+      
     <div className="advertsPage">
       {/*<Button onClick={handleLogout}>Logout</Button>*/}
       {adverts.length?
@@ -25,7 +25,7 @@ function AdvertsPage(){
         
         </ul>:<Button varuant="primary">Da de alta el tuyo</Button>}
     </div> 
-    </Layout>
+  
     );
 
 }

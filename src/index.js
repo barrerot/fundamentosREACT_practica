@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import storaje from './utils/storaje';
 import { setAuthorizationHeader } from './api/client';
+import { BrowserRouter } from 'react-router-dom';
 
 const accessToken= storaje.get('auth')
 if(accessToken){
@@ -13,7 +14,9 @@ if(accessToken){
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <BrowserRouter>
     <App initiallyLogged={accessToken} />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
