@@ -23,9 +23,10 @@ function AdvertsPage(){
             {
                 adverts.map(
                   (advert) => 
-                  
-                     <Link to={"/adverts/"+advert.id}>{advert.name}</Link>
-                  
+                  <Link to={"/adverts/"+advert.id}><li>{advert.name}<b><br/>precio:</b>{advert.price}€ <b><br/>tags:</b>{advert.tags}<b><br/>tipo:</b>{advert.sale ? "es de venta" : "es de compra"}<br/>
+                  </li>
+                     </Link>
+                     
                   
                   
                 )
