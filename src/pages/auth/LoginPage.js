@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import Button from"../../components/shared/Button";
 import { login } from "./service";
 import { AuthContext, useAuth } from "./context";
+import './LoginPage.css';
 import { useLocation, useNavigate } from "react-router-dom";
 
 function LoginPage(){
@@ -12,16 +13,25 @@ function LoginPage(){
     const[credentials, setCredentials]=useState({
         email:'',password:'',
     })
+    const[error,setError] =useState(null);
     const location =useLocation();
     const navigate=useNavigate();
     
     const handleSubmit=async(event) =>{
         event.preventDefault();
-        await login(credentials)
+        try {
+            await login(credentials);
+            onLogin();
+            const to=location?.state?.from||'/';
+            navigate(to,{replace:true});
+        } catch (error) {
+            setError(error);
+            
+        }
+    
+        
         //está logueado
-        onLogin();
-        const to=location?.state?.from||'/';
-        navigate(to,{replace:true});
+       
         //setIsLogged(true);
     };
     const handleEmailChange=(event)=>{
@@ -35,6 +45,9 @@ function LoginPage(){
        // console.log(event.target.value);
        
            };
+           const resetError=() =>{
+            setError(null);
+           }
            const disabled=!(credentials.email&& credentials.password);
     
     return<div>
@@ -44,6 +57,7 @@ function LoginPage(){
             <input type="password" name="password" onChange={handlePasswordChange}></input>
             
             <Button type="submit" $variant="primary" disabled={disabled}>Log in</Button>
+            {error&&<div className="loginPage-error" onClick={setError}>{error.message}</div>}
 
         </form>
     </div>;
