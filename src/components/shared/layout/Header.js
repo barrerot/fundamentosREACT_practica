@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Button from "../Button";
 import { ReactComponent as Icon } from '../../../assets/twitter.svg';
 import { logout } from "../../../pages/auth/service";
@@ -20,16 +20,16 @@ function Header() {
                 {/* <img src={logo} alt="walla-react" /> */}
             </div>
             <nav>
-                <Link to="/adverts/new">Nuevo anuncio</Link>
-                <Link to="/adverts"> |anuncios disponibles</Link>
-                <Link to="/login">|Login</Link>
+                <NavLink to="/adverts/new">Nuevo anuncio</NavLink>
+                <NavLink to="/adverts"> |anuncios disponibles</NavLink>
+                <NavLink to="/login">|Login</NavLink>
             </nav>
             </Link>
             {
                 isLogged ? (
-                    <Button onClick={handleLogoutClick} variant="primary">Logout</Button>
+                    <Button  onClick={handleLogoutClick} variant="primary">Logout</Button>
                 ) : (
-                    <Button variant="primary">Login</Button>
+                    <Button as={Link} to="/login" variant="primary">Login</Button>
                 )
             }
         </header>
