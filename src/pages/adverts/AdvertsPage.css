@@ -1,3 +1,12 @@
 .advertsPage{
     color: red;
 }
+.tag-span {
+    background-color: #13c1ac; /* Color de fondo azul */
+    color: white;             /* Texto en color blanco */
+    padding: 5px 10px;        /* Padding para dar espacio alrededor del texto */
+    margin: 2px;              /* Margen para separar los tags */
+    border-radius: 5px;       /* Bordes redondeados */
+    font-size: 0.8em;         /* Tamaño de letra más pequeño */
+    display: inline-block;    /* Asegurarse de que se comporten como elementos en línea */
+}

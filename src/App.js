@@ -28,7 +28,7 @@ function App({ initiallyLogged }) {
           />
           <Route path="adverts/new" element={<Layout tittle="Los Crea tu anuncio"><NewAdvertPage></NewAdvertPage></Layout>}
           />
-          <Route path="/" element={<Navigate to="/adverts"></Navigate>}></Route>
+          <Route path="/" element={<Navigate to="/login"></Navigate>}></Route>
           <Route path="/404" element={<div>404| Not found</div>}></Route>
           <Route path="*"element={<Navigate to="404"></Navigate>}></Route>
         </Routes>
