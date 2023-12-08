@@ -24,7 +24,7 @@ function App({ initiallyLogged }) {
       <div className="App">
         <Routes>
           <Route path="login" element={<LoginPage onLogin={handleLogin}/>}/>
-          <Route path="adverts" element={<Layout tittle="Los anuncios que hay.."><AdvertsPage/>
+          <Route path="adverts" element={<Layout tittle="Los anuncios que hay.."><RequireAuth><AdvertsPage></AdvertsPage></RequireAuth>
           </Layout>}/>
           <Route path="/adverts/:advertId" element={<Layout><AdvertPage></AdvertPage></Layout>}
           />
