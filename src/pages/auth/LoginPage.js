@@ -21,7 +21,7 @@ function LoginPage(){
         //está logueado
         onLogin();
         const to=location?.state?.from||'/';
-        navigate(to);
+        navigate(to,{replace:true});
         //setIsLogged(true);
     };
     const handleEmailChange=(event)=>{
