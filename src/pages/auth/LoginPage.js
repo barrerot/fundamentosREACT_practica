@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import Button from"../../components/shared/Button";
 import { login } from "./service";
 import { AuthContext, useAuth } from "./context";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function LoginPage(){
     const{onLogin}=useAuth();
@@ -11,12 +12,16 @@ function LoginPage(){
     const[credentials, setCredentials]=useState({
         email:'',password:'',
     })
+    const location =useLocation();
+    const navigate=useNavigate();
     
     const handleSubmit=async(event) =>{
         event.preventDefault();
         await login(credentials)
         //está logueado
         onLogin();
+        const to=location?.state?.from||'/';
+        navigate(to);
         //setIsLogged(true);
     };
     const handleEmailChange=(event)=>{
