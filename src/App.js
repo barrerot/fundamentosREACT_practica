@@ -7,6 +7,7 @@ import { AuthContext } from "./pages/auth/context";
 import Layout from "./components/shared/layout/Layout";
 import AdvertPage from "./pages/adverts/AdvertPage";
 import PageNotFound from"./components/shared/PageNotFound";
+import RequireAuth from "./pages/auth/components/RequireAuth";
 function App({ initiallyLogged }) {
   const [isLogged, setIsLogged] = useState(initiallyLogged);
   const handleLogin = () => setIsLogged(true);
@@ -27,7 +28,7 @@ function App({ initiallyLogged }) {
           </Layout>}/>
           <Route path="/adverts/:advertId" element={<Layout><AdvertPage></AdvertPage></Layout>}
           />
-          <Route path="adverts/new" element={<Layout tittle="Los Crea tu anuncio"><NewAdvertPage></NewAdvertPage></Layout>}
+          <Route path="adverts/new" element={<Layout tittle="Los Crea tu anuncio"><RequireAuth><NewAdvertPage></NewAdvertPage></RequireAuth></Layout>}
           />
           <Route path="/" element={<Navigate to="/login"></Navigate>}></Route>
           <Route path="/404" element={<PageNotFound></PageNotFound>}></Route>
