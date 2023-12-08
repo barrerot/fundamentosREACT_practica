@@ -6,6 +6,7 @@ import NewAdvertPage from "./pages/adverts/NewAdvertPage";
 import { AuthContext } from "./pages/auth/context";
 import Layout from "./components/shared/layout/Layout";
 import AdvertPage from "./pages/adverts/AdvertPage";
+import PageNotFound from"./components/shared/PageNotFound";
 function App({ initiallyLogged }) {
   const [isLogged, setIsLogged] = useState(initiallyLogged);
   const handleLogin = () => setIsLogged(true);
@@ -29,7 +30,7 @@ function App({ initiallyLogged }) {
           <Route path="adverts/new" element={<Layout tittle="Los Crea tu anuncio"><NewAdvertPage></NewAdvertPage></Layout>}
           />
           <Route path="/" element={<Navigate to="/login"></Navigate>}></Route>
-          <Route path="/404" element={<div>404| Not found</div>}></Route>
+          <Route path="/404" element={<PageNotFound></PageNotFound>}></Route>
           <Route path="*"element={<Navigate to="404"></Navigate>}></Route>
         </Routes>
         <header className="App-header">
