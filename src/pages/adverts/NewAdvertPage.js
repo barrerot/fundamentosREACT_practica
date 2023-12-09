@@ -8,7 +8,7 @@ function NewAdvertPage() {
     const [name, setName] = useState('');
     const [sale, setSale] = useState(true);
     const [price, setPrice] = useState(0);
-    const [tags, setTags] = useState([]); // Cambiado a un array vacío
+    const [tags, setTags] = useState([]); 
     const [photo, setPhoto] = useState('');
 
     const handleNameChange = (event) => {
@@ -16,7 +16,7 @@ function NewAdvertPage() {
     };
 
     const handleSaleChange = (event) => {
-        setSale(event.target.value === 'true'); // Asegúrate de convertir el valor a boolean
+        setSale(event.target.value === 'true'); 
     };
 
     const handlePriceChange = (event) => {
@@ -24,7 +24,7 @@ function NewAdvertPage() {
     };
 
     const handleTagsChange = (event) => {
-        // Obtiene las opciones seleccionadas como un array
+        
         const selectedOptions = Array.from(event.target.selectedOptions, option => option.value);
         setTags(selectedOptions);
     };
