@@ -13,3 +13,7 @@ export const createAdvert=(advert)=>{
   const url=advertsUrl;
   return client.post(url,advert);
 }
+export const deleteAdvert=(advertId)=>{
+  const url = `${advertsUrl}/${advertId}`;
+  return client.delete(url);
+};
