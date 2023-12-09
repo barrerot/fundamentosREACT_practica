@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "../../components/shared/layout/Layout"; 
 import{createAdvert}from"./service";
+import { useNavigate } from "react-router-dom";
 
 function NewAdvertPage(event) {
     const[name,setName]=useState('');
@@ -8,10 +9,11 @@ function NewAdvertPage(event) {
     const[price,setPrice]=useState(0);
     const[tags,setTags]=useState('');
     const[photo,setPhoto]=useState('');
-    const handleNameChange=() =>{
+    const handleNameChange=(event) =>{
 setName(event.target.value);
     }
 const[isFetching,setIsFetching]=useState(false);
+const navigate=useNavigate();
     const handleSaleChange=(event) =>{
         setSale(event.target.value);
             }
@@ -22,13 +24,14 @@ const[isFetching,setIsFetching]=useState(false);
                         setTags(event.target.value);
                             }
                             const handlePhotoChange=(event) =>{
-                                setPhoto(event.target.value);
+                                //setPhoto(event.target.files[0]);
                                     }
                             const handleSubmit=async(event)=>{
 event.preventDefault();
 try {
     setIsFetching(true);
-    const advert=await createAdvert({})
+    const advert=await createAdvert({name:name,sale:sale,price:price,tags:tags,});
+    navigate('/adverts/'+advert.id);
 } catch (error) {
     
 }
@@ -36,7 +39,7 @@ try {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                {/* Campo para el nombre */}
+                {}
                 <label htmlFor="nombre">Nombre:</label>
                 <input value={name} onChange={handleNameChange} type="text" id="nombre" name="nombre" /><br /><br />
 
