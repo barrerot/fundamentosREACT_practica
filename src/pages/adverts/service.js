@@ -17,3 +17,7 @@ export const deleteAdvert=(advertId)=>{
   const url = `${advertsUrl}/${advertId}`;
   return client.delete(url);
 };
+
+export const getTags = () => {
+  return client.get('/api/v1/adverts/tags');
+};
