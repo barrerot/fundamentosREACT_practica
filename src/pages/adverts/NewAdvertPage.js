@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Layout from "../../components/shared/layout/Layout"; 
+import{createAdvert}from"./service";
 
 function NewAdvertPage(event) {
     const[name,setName]=useState('');
@@ -10,6 +11,7 @@ function NewAdvertPage(event) {
     const handleNameChange=() =>{
 setName(event.target.value);
     }
+const[isFetching,setIsFetching]=useState(false);
     const handleSaleChange=(event) =>{
         setSale(event.target.value);
             }
@@ -22,9 +24,18 @@ setName(event.target.value);
                             const handlePhotoChange=(event) =>{
                                 setPhoto(event.target.value);
                                     }
+                            const handleSubmit=async(event)=>{
+event.preventDefault();
+try {
+    setIsFetching(true);
+    const advert=await createAdvert({})
+} catch (error) {
+    
+}
+                            }
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 {/* Campo para el nombre */}
                 <label htmlFor="nombre">Nombre:</label>
                 <input value={name} onChange={handleNameChange} type="text" id="nombre" name="nombre" /><br /><br />
