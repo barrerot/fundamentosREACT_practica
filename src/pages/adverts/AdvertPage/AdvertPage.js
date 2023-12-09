@@ -12,7 +12,7 @@ function AdvertPage(){
                 navigate("/404");
             }
         });
-    },[]);
+    },[navigate,params.advertId]);
     return<Content title="Advert Detail">
         <div>Advert Detail{params.advertId} goes here..
         {advert&& <code>{JSON.stringify(advert)}</code>}
