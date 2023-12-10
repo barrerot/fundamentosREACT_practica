@@ -9,9 +9,13 @@ export const getAdvert = (advertId) => {
   const url = `${advertsUrl}/${advertId}`;
   return client.get(url);
 };
-export const createAdvert = (advert) => {
+export const createAdvert = (formData) => {
   const url = advertsUrl;
-  return client.post(url, advert);
+  return client.post(url, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 export const deleteAdvert = (advertId) => {
   const url = `${advertsUrl}/${advertId}`;

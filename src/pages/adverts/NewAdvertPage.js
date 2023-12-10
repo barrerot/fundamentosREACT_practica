@@ -8,7 +8,7 @@ function NewAdvertPage() {
   const [sale, setSale] = useState(true);
   const [price, setPrice] = useState(0);
   const [tags, setTags] = useState([]);
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(null);
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -27,17 +27,31 @@ function NewAdvertPage() {
   };
 
   const handlePhotoChange = (event) => {
-    // Aquí  lógica para manejar el cambio de la foto
+    const file = event.target.files[0];
+    if (file) {
+      setPhoto(file);
+    }
   };
 
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("sale", sale);
+    formData.append("price", price);
+    tags.forEach((tag) => formData.append("tags", tag));
+    if (photo) {
+      formData.append("photo", photo);
+    }
+
     try {
-      const advert = await createAdvert({ name, sale, price, tags });
+      const advert = await createAdvert(formData);
+
       navigate("/adverts/" + advert.id);
     } catch (error) {
+      console.error("Error al crear el anuncio:", error);
       // Manejo del error
     }
   };
