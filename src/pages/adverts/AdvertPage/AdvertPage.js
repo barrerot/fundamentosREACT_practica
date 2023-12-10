@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Content from '../../../components/shared/layout/Content';
 import { getAdvert, deleteAdvert } from '../service';
 import ConfirmModal from '../../../components/shared/ConfirmModal '; 
+import Button from "../../../components/shared/Button";
 
 function AdvertPage() {
   const params = useParams();
@@ -49,7 +50,8 @@ function AdvertPage() {
               <span key={index} className="tag-span"> {tag} </span>
             ))}
             <br />
-            <button onClick={openModal}>Borrar Anuncio</button>
+            <Button onClick={openModal}>Borrar Anuncio</Button>
+            
 
             <ConfirmModal
               isOpen={isModalOpen}
