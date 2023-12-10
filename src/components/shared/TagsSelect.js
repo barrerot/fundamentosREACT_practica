@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getTags } from "../../pages/adverts/service"; // Asegúrate de que la ruta sea correcta
+import { getTags } from "../../pages/adverts/service"; 
 
-const TagsSelect = () => {
+const TagsSelect = ({ onTagsChange }) => {
   const [tags, setTags] = useState([]);
-  const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
     getTags()
@@ -16,24 +15,22 @@ const TagsSelect = () => {
   }, []);
 
   const handleChange = (event) => {
-    // Obtiene todas las opciones seleccionadas
     const selectedOptions = Array.from(
       event.target.selectedOptions,
-      (option) => option.value,
+      (option) => option.value
     );
-    setSelectedTags(selectedOptions);
+    onTagsChange(selectedOptions);
   };
 
   return (
     <div>
-      <label htmlFor="tags-select">Elige etiquetas:</label>
+      <label htmlFor="tags-select">Elige tags:</label>
       <select
         multiple
         id="tags-select"
-        value={selectedTags}
         onChange={handleChange}
       >
-        <option value="">--Por favor elige una opción--</option>
+        <option value="">--Por favor elige los tags--</option>
         {tags.map((tag) => (
           <option key={tag} value={tag}>
             {tag}

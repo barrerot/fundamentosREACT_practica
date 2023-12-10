@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Layout from "../../components/shared/layout/Layout";
-import { createAdvert } from "./service";
 import { useNavigate } from "react-router-dom";
 import TagsSelect from "../../components/shared/TagsSelect";
+import { createAdvert } from "./service";
 
 function NewAdvertPage() {
   const [name, setName] = useState("");
@@ -23,16 +22,12 @@ function NewAdvertPage() {
     setPrice(event.target.value);
   };
 
-  const handleTagsChange = (event) => {
-    const selectedOptions = Array.from(
-      event.target.selectedOptions,
-      (option) => option.value,
-    );
-    setTags(selectedOptions);
+  const handleTagsChange = (selectedTags) => {
+    setTags(selectedTags);
   };
 
   const handlePhotoChange = (event) => {
-    //setPhoto(event.target.files[0]);
+    // Aquí  lógica para manejar el cambio de la foto
   };
 
   const navigate = useNavigate();
@@ -80,19 +75,7 @@ function NewAdvertPage() {
         <br />
         <br />
 
-        <label htmlFor="tags">Tags:</label>
-        <select
-          multiple
-          id="tags"
-          name="tags"
-          value={tags}
-          onChange={handleTagsChange}
-        >
-          <option value="lifestyle">lifestyle</option>
-          <option value="mobile">mobile</option>
-          <option value="motor">motor</option>
-          <option value="work">work</option>
-        </select>
+        <TagsSelect onTagsChange={handleTagsChange} />
         <br />
         <br />
 
@@ -101,7 +84,6 @@ function NewAdvertPage() {
           type="file"
           id="photo"
           name="photo"
-          value={photo}
           onChange={handlePhotoChange}
         />
         <br />
